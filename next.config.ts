@@ -1,7 +1,16 @@
-import type { NextConfig } from "next";
+// next.config.ts
+import { NextConfig } from 'next';
 
-const nextConfig: NextConfig = {
-  /* config options here */
+const config: NextConfig = {
+  reactStrictMode: true,
+  async rewrites() {
+    return [
+      {
+        source: '/problem/:id',
+        destination: '/problem/:id',
+      },
+    ];
+  },
 };
 
-export default nextConfig;
+export default config;

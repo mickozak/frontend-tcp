@@ -1,101 +1,92 @@
-import Image from "next/image";
+import React from "react";
+import { FaGithub } from "react-icons/fa"; // Import the GitHub icon from react-icons
+import ProblemList from "./components/ProblemsList";
+import Footer from "./components/Footer";
 
-export default function Home() {
+/**
+ * The Home component displays the main page of the application.
+ * It contains usage instructions, information about the frontend and backend technologies,
+ * and a list of problems fetched from the service.
+ *
+ * @returns {JSX.Element} The rendered component displaying application instructions and the list of problems.
+ */
+const Home = () => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
+    <div style={{ minHeight: "100vh", padding: "20px" }}>
+      <div
+        style={{
+          border: "1px solid #fff",
+          color: "#fff",
+          padding: "20px",
+          marginBottom: "20px",
+        }}
+      >
+        <p>
+          <strong>
+            Integration with an external system – instructions: This application
+            connects to a ServiceNow instance and supports CRUD operations.
+          </strong>
+        </p>
+        <br />
+        <ul>
+          <li>
+            After clicking the "Get problems" button, all problems are fetched.
           </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
+          <li>
+            After clicking the "Create problem" button, the user is redirected
+            to the "Create new problem" page. The fields "Short description"
+            and "Description" must be filled out before clicking "Create".
+          </li>
+          <li>
+            On the main page, after fetching all problems, a specific problem can
+            be deleted by clicking the "trash" icon.
+          </li>
+          <li>
+            You can view details of a specific problem by clicking the "i" icon.
+            After being redirected to the details page, sample data is displayed,
+            and the "Short description" field can be updated. The remaining fields
+            are read-only. Additionally, you can add a new work note by filling in
+            the "work note" field and clicking "Post".
+          </li>
+          <li>The "Back" button is also implemented.</li>
+        </ul>
+        <br />
+        <p>General: Back-end VPS (OVH), Front-end VPS (OVH), Browser - Safari (resolution: 1024 x 820)</p>
+        <div className="flex">
+          <p>
+            Front-end: Next (React, Axios, React Icons, Tailwind CSS) – GitHub repository:
+          </p>{" "}
           <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            href="https://github.com/mickozak/frontend-tcp" // Replace with the actual repository link
             target="_blank"
             rel="noopener noreferrer"
+            style={{ color: "#fff", textDecoration: "none", fontSize: "24px" }}
+            className="ml-4"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+            <FaGithub />
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div className="flex">
+          <p>
+            Back-end: Node (Express, Axios, CORS, dotenv), ServiceNow – GitHub repository:
+          </p>{" "}
+          <a
+            href="https://github.com/mickozak/backend-tcp" // Replace with the actual repository link
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "#fff", textDecoration: "none", fontSize: "24px" }}
+            className="ml-4"
+          >
+            <FaGithub />
+          </a>
+        </div>
+      </div>
+
+      {/* Problems list */}
+      <ProblemList />
+      <Footer />
     </div>
   );
-}
+};
+
+export default Home;
